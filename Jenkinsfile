@@ -5,7 +5,7 @@ pipeline{
     environment{
         dockerImage = ''
         registry = 'palash150403/jenkins_docker_image'
-        registryCredentials = 'Docker'
+        // registryCredentials = 'Docker'
     }
 
     stages{
@@ -19,7 +19,7 @@ pipeline{
         stage('Push Docker Image'){
             steps{
                 script{
-                    docker.withRegistry('https://hub.docker.com/', registryCredentials){
+                    docker.withRegistry('https://hub.docker.com/', 'Docker'){
                         dockerImage.push()
                     }
                 }
