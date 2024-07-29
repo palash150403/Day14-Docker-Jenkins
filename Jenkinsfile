@@ -11,7 +11,7 @@ pipeline{
     stages{
         stage('Build Docker Image'){
             steps{
-                script{
+                script{ 
                     dockerImage = docker.build("${registry}:latest")
                 }
             }
@@ -19,7 +19,7 @@ pipeline{
         stage('Push Docker Image'){
             steps{
                 script{
-                    docker.withRegistry('', registryCredentials){
+                    docker.withRegistry('https://hub.docker.com/', registryCredentials){
                         dockerImage.push()
                     }
                 }
